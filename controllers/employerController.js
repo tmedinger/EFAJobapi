@@ -3,7 +3,7 @@
 // This should have an initial get function that retrieves all of the items from that db table
 
 var db = require("../models/index").sequelize;
-var employerModel = db.model("employer_model"); // 
+var employerModel = db.model("employer_model"); 
 var modelOne = db.model("model_one");
 var modelTwo = db.model("model_two");
 
