@@ -1,25 +1,26 @@
 {
   "name": "efajobapi",
   "version": "1.0.0",
-  "description": "",
+  "description": "API for EFA Job Board",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "author": "",
+  "author": "May 2018 Javascript Cohort",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.3",
-    "dotenv": "^6.0.0",
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
-    "jsonwebtoken": "^8.3.0",
-    "mysql2": "^1.5.3",
-    "pg": "^7.4.3",
+    "jsonwebtoken": "^8.2.0",
+    "nodemon": "^1.17.5",
+    "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.38.0"
+    "sequelize": "^4.37.0"
+    "mysql2": "^1.5.3",
   },
   "devDependencies": {
     "nodemon": "^1.18.1"
