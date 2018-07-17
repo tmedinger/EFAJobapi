@@ -7,8 +7,8 @@ const JobType = (sequelize, DataTypes) => {
             primaryKey: true
         },
        Enum: {
-        type : DataTypes.ENUM,
-       values: ['Full Time', 'Part Time', 'Contract', 'Internship', 'Collaborative', 'Volunteer'] 
+            type : DataTypes.ENUM,
+            values: ['Full Time', 'Part Time', 'Contract', 'Internship', 'Collaborative', 'Volunteer'] 
        }
     })
 }
@@ -16,7 +16,7 @@ const JobType = (sequelize, DataTypes) => {
 {
     
         Model: associate = (models) => {
-            JobType.hasMany(models.Job)
+            JobType.belongsTo(models.Job)
         }
     
 }
