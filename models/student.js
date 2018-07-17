@@ -8,16 +8,16 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             validate: {
                 isAlphanumeric: true,
-                len: [1,30],
+                len: [1, 30],
                 isLowercase: true
             }
         },
-        last_name : {
+        last_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 isAlphanumeric: true,
-                len: [1,50],
+                len: [1, 50],
                 isLowercase: true
             }
         },
@@ -27,15 +27,15 @@ module.exports = (sequelize, DataTypes) => {
             unique: true,
             validate: {
                 isEmail: true,
-                len: [1,30],
+                len: [1, 30],
                 isAlphanumeric: true
             }
         },
         password: {
             type: DataTypes.STRING,
-            allowNull:false,
+            allowNull: false,
             validate: {
-            len: [5,30]
+                len: [5, 30]
             }
         },
         resume: {
@@ -44,11 +44,11 @@ module.exports = (sequelize, DataTypes) => {
                 isURL: true
             }
         },
-        social_media_id: {
-            foreignKey: true
-            }
+        Model: associate = (models) => {
+            student.belongsTo(models.socialMedia)
+            student.hasMany(models.jobApplied)
+        }
     })
 
-    student.socialMedia = student.belongsTo(socialMedia)
     return student;
 }
