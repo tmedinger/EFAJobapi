@@ -1,14 +1,14 @@
 {
   "name": "efajobapi",
   "version": "1.0.0",
-  "description": "",
+  "description": "API for EFA Job Board",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "author": "",
+   "author": "May 2018 Javascript Cohort",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^6.0.0",
