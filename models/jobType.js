@@ -1,9 +1,24 @@
+'use strict'
+
 const JobType = (sequelize, DataTypes) => {
     return sequelize.define('jobType', {
-       job_Type = DataTypes.ENUM('Full Time', 'Part Time', 'Contract', 'Internship', 'Collaborative', 'Volunteer')  
+        Id: {
+            type: DataType.INTEGER,
+            primaryKey: true
+        },
+       Enum: {
+            type : DataTypes.ENUM,
+            values: ['Full Time', 'Part Time', 'Contract', 'Internship', 'Collaborative', 'Volunteer'] 
+       }
     })
 }
 
-JobType.Job = JobType.belongsTo(Job);
+{
+    
+        Model: associate = (models) => {
+            JobType.belongsTo(models.Job)
+        }
+    
+}
 
 export default JobType;
