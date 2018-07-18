@@ -1,14 +1,14 @@
 var express = require('express')
 var router = express.Router()
-var Student = require('../services/studentServices');
+var sequelize = require('../db');
+var Job = sequelize.import('../models/jobsmodel');
 
+router.get("/jobs", function(req, res) {
 
-router.get('/students' , function(req, res) {
-    
-    //res.send("You suck");
-
-    Student
-    .getAll()
+    Job
+    .findAll({
+      attributes: ['job_title']
+    })
     .then(
       function findAllSuccess(data) {
           res.json(data);
@@ -17,6 +17,6 @@ router.get('/students' , function(req, res) {
           res.send(500, err.message);
       }
   );
-})
+  })
 
 module.exports = router;
