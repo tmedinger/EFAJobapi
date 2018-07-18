@@ -9,7 +9,7 @@ exports.getAll = function(){
 }
 
 exports.getOneStudent = function(id){
-    return student.findAll({
+    return student.findOne({
         where: {
             id:req.params.id
         }
