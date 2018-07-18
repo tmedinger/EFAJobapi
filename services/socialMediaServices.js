@@ -1,5 +1,5 @@
 const db = require('../models/index').sequelize;
-const student = require('../models/socialmedia')
+const student = require('../models/socialmedia');
 var router = require('express').Router();
 
 export default class SocialMediaService {
