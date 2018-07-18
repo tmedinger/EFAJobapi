@@ -1,18 +1,14 @@
-const student = require('../models/student')
-var router = require('express').Router();
+var sequelize = require('../db');
+const student = sequelize.import('../models/student')
 
-export default class StudentsService {
-    constructor(){}
 
-    findAllStudents(){
+exports.getAll = function(){
         return student.findAll({
-            include: [{
-                model: student
-            }]
+            
         })
-    }
+}
 
-    putStudentById(studentId){
+  /*  putStudentById(studentId){
         let id = studentId;
         return router.put(`/api/studentaccount/:${id}`, function(req, res) {
             var data = req.params.id;
@@ -61,4 +57,4 @@ export default class StudentsService {
         });
     }
 }
-
+*/
