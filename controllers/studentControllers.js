@@ -17,7 +17,7 @@ router.get('/students' , function(req, res) {
   );
 })
 
-router.put(`/api/studentaccount/:${id}`, function(req, res) {
+router.put(`/api/studentaccount/:id`, function(req, res) {
         var data = req.params.id;
         var student = req.body.student
         
