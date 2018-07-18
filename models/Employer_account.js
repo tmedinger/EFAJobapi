@@ -1,65 +1,63 @@
-'use strict'
+"use strict";
 
 module.exports = (sequelize, DataTypes) => {
-    const Employer = sequelize.define('Employer_account', {
+  const Employer = sequelize.define(
+    "Employer_account",
+    {
       Total_job_postings: {
-          type: DataTypes.INTEGER
+        type: DataTypes.INTEGER
       },
-      Uid: { 
-          type:DataTypes.INTEGER
+      Uid: {
+        type: DataTypes.INTEGER
       },
       Employer_name: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          validate:{
-          max: 80,
-          isAlphanumeric:true,
-          isLowercase: true}
-      },
-      Employer_contact_name: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          validate:{
-          max: 30,
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [0, 80],
           isAlphanumeric: true,
           isLowercase: true
-          }
+        }
+      },
+      Employer_contact_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [0, 80],
+          isAlphanumeric: true,
+          isLowercase: true
+        }
       },
       Employer_contact_email: {
-          validate:{
+        validate: {
           isLowercase: true,
           isEmail: true
-          }
+        }
       },
       Password: {
-          type: DataTypes.STRING,
-          allowNull: false
-      }, 
+        type: DataTypes.STRING,
+        allowNull: false
+      },
       Company_url: {
-          type: DataTypes.STRING,
-          valdate:{
+        type: DataTypes.STRING,
+        valdate: {
           isURL: true
-          }
+        }
       },
-      Employer_description: {
-
-      },
+      Employer_description: {},
       Employer_location: {
-          type:DataTypes.STRING,
-          validate: {
-          max:80
-          }
-      } 
+        type: DataTypes.STRING,
+        validate: {
+          len: [0, 80]
+        }
+      }
     },
     {
-        
-            Model:associate = (models) => {
-                Employer.hasMany(models.job)
-            }
-        
+      Model: (associate = models => {
+        Employer.hasMany(models.job);
+      })
     }
-)
-    
+  );
 
-    return Employer;
-}
+  return Employer;
+};
