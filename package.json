@@ -8,7 +8,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "author": "May 2018 Javascript Cohort",
+   "author": "May 2018 Javascript Cohort",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
