@@ -1,4 +1,4 @@
-const db = require('../models/index').sequelize;
+const db = require('../db').sequelize;
 const student = require('../models/socialmedia');
 var router = require('express').Router();
 
