@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         Model: associate = (models) => {
-            student.belongsTo(models.socialMedia)
+            student.hasOne(models.socialMedia)
             student.hasMany(models.jobApplied)
         }
     })
