@@ -3,7 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
-const rfs = require('rotating-file-stream')
+const rfs = require('rotating-file-stream');
 
 const app = express();
 
