@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
                 isURL: true,
                 len: [0, 50]
             }
-        }
+        },
         // Projects: {
         //     type: DataTypes.ARRAY,
 
