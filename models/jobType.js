@@ -11,7 +11,7 @@ const JobType = (sequelize, DataTypes) => {
             values: ['Full Time', 'Part Time', 'Contract', 'Internship', 'Collaborative', 'Volunteer'] 
        },
        Model: associate = (models) => {
-           JobType.belongsTo(models.Job)
+           JobType.belongsTo(models.job)
        }
     })
 }
