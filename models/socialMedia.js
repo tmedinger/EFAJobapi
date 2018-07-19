@@ -13,28 +13,34 @@ module.exports = (sequelize, DataTypes) => {
         LinkedIn: {
             type: DataTypes.STRING,
             validate: {
-                usURL: true,
+                isURL: true,
                 len: [0, 50]
             }
         },
         CodePen: {
             type: DataTypes.STRING,
             validate: {
-                usURL: true,
+                isURL: true,
                 len: [0, 50]
             }
         },
         Portfolio: {
             type: DataTypes.STRING,
             validate: {
-                usURL: true,
+                isURL: true,
+                len: [0, 50]
+            }
+        },
+        Projects: {
+            type: DataTypes.ARRAY,
+            validate: {
+                isURL: true,
                 len: [0, 50]
             }
         },
         Model: associate = (models) => {
             socialMedia.belongsTo(models.student)
         }
-        //student_account_Id
     })
     return socialMedia;
 }
