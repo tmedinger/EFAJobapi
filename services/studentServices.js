@@ -1,64 +1,49 @@
-const student = require('../models/student')
-var router = require('express').Router();
+var sequelize = require('../db');
+const student = sequelize.import('../models/student')
 
-export default class StudentsService {
-    constructor(){}
 
-    findAllStudents(){
+exports.getAll = function(){
         return student.findAll({
-            include: [{
-                model: student
-            }]
-        })
-    }
-
-    putStudentById(studentId){
-        let id = studentId;
-        return router.put(`/api/studentaccount/:${id}`, function(req, res) {
-            var data = req.params.id;
-            var student = req.body.student
             
-            student
-                .update({ 
-                    first_name : student.first_name,
-                    last_name : student.last_name,
-                    email : student.email,
-                    password : student.password,
-                    resume : student.resume,
-                    social_media_id : student.social_media_id,
-                },
-                {where: {id: data}}
-                ).then(
-                    function updateSuccess(updatedLog) {
-                        res.json({
-                            student: student
-                        });            
-                    },
-                    function updateError(err){
-                        res.send(500, err.message);
-                    }
-                )
-        });
-    }
-
-    getStudentById(studentId){
-        let id = studentId;
-        return router.get(`/api/studentaccount/${id}`, function(req, res) {
-            var data = req.params.id;
-            var userid = req.user.id;
-        
-            student
-                .findOne({
-                    where: { id: data, owner: userid }
-                }).then(
-                    function findOneSuccess(data) {
-                        res.json(data);
-                    },
-                    function findOneError(err) {
-                        res.send(500, err.message);
-                    }
-                );
-        });
-    }
+        })
 }
 
+exports.getOneStudent = function(id){
+    return student.findAll({
+        where: {
+            id:req.params.id
+        }
+    })
+}
+
+exports.createStudent = function(){
+    return student.create({
+        first_name : req.body.student.first_name,
+        last_name : req.body.student.last_name,
+        email : req.body.student.email,
+        password : req.body.student.password,
+        resume : req.body.student.resume,
+        social_media_id : req.body.student.social_media_id,
+    })
+}
+
+exports.editStudent = function(id){
+    return student.update({
+        first_name : req.body.student.first_name,
+        last_name : req.body.student.last_name,
+        email : req.body.student.email,
+        password : req.body.student.password,
+        resume : req.body.student.resume,
+        social_media_id : req.body.student.social_media_id,
+    },
+    {where: {id: req.params.id}})
+}
+
+exports.deleteStudent = function(id){
+    return student.destroy({
+        where:{ id:req.student.id}
+    })
+}
+
+
+  
