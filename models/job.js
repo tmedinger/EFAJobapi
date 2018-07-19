@@ -8,7 +8,7 @@ const Job = (sequelize, Datatypes) => {
             }
         },
         Job_experience: {
-            type: DataTypes.STRING,
+            type: DataTypes.ARRAY,
             allowNull: false,
             validate: {
                 len: [1,120],
