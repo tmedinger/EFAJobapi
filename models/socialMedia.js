@@ -31,14 +31,16 @@ module.exports = (sequelize, DataTypes) => {
                 len: [0, 50]
             }
         },
-        // Projects: {
-        //     type: DataTypes.ARRAY,
-
-        // },
+        Projects: {
+            type: DataTypes.ARRAY,
+            validate: {
+                isURL: true,
+                len: [0, 50]
+            }
+        },
         Model: associate = (models) => {
             socialMedia.belongsTo(models.student)
         }
-        //student_account_Id
     })
     return socialMedia;
 }
