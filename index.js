@@ -7,8 +7,6 @@ const fs = require('fs');
 const path = require('path');
 const rfs = require('rotating-file-stream');
 
-const app = express();
-
 var logDirectory = path.join(__dirname, 'logs')
 
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
