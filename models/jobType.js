@@ -9,16 +9,16 @@ const JobType = (sequelize, DataTypes) => {
        Enum: {
             type : DataTypes.ENUM,
             values: ['Full Time', 'Part Time', 'Contract', 'Internship', 'Collaborative', 'Volunteer'] 
+       },
+       Model: associate = (models) => {
+           JobType.belongsTo(models.Job)
        }
     })
 }
 
-{
+
     
-        Model: associate = (models) => {
-            JobType.belongsTo(models.Job)
-        }
     
-}
+
 
 export default JobType;
