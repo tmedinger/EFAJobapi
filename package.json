@@ -8,7 +8,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-   "author": "May 2018 Javascript Cohort",
+  "author": "May 2018 Javascript Cohort",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -21,13 +21,9 @@
     "nodemon": "^1.17.5",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
+    "sequelize": "^4.37.0",
     "rotating-file-stream": "^1.3.6",
-<<<<<<< HEAD
-    "mysql2": "^1.5.3"
-=======
-    "sequelize": "^4.38.0",
     "sequelize-cli": "^4.0.0"
->>>>>>> 478ddd37d016becdcce8ebbb307964f346ef09ed
   },
   "devDependencies": {
     "nodemon": "^1.18.1"
