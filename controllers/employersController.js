@@ -1,7 +1,6 @@
-var express = require('express');
-var router = express.Router();     
-var sequelize = require('../db');
-var User = sequelize.import('../Models/user'); 
+var express = require('express')
+var router = express.Router()
+var Employer = require('../services/employerServices');     
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 
