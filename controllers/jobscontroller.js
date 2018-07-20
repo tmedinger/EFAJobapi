@@ -2,10 +2,6 @@ var express = require('express')
 var router = express.Router()
 var Job = require('../services/jobServices');
 
-var EmployerAccountService = require("../services/employerAccountServices");
-
-const employerAccountService = () => new EmployerAccountService()
-
 router.get("/jobs", function (req, res) {
 
     Job
