@@ -8,33 +8,31 @@ var modelOne = db.model("model_one");
 var modelTwo = db.model("model_two");
 
 class EmployerAccountService {
-    constructor(userId, paramsId){
+    constructor() {
 
-     }
+    }
 
-    getAllEmployers(){
-    // MODELNAME
-    //     .findAll({
-    //         where: {
-    //             owner: userId
-    //         }
-    //     })
-        return employerModel.findAll({ 
-            include: [modelOne, modelTwo] 
+    getAllEmployers() {
+        // MODELNAME
+        //     .findAll({
+        //         where: {
+        //             owner: userId
+        //         }
+        //     })
+        return employerModel.findAll({
+            include: [modelOne, modelTwo]
         })
     }
-    
-    getOneEmployer(){
-    // MODELNAME
-    //     .findOne({
-    //         where: {
-    //             id: paramsId,
-    //             owner: userid
-    //         }
-    //     })
 
+    getOneEmployer(paramsId) {
+        employerModel
+            .findOne({
+                where: {
+                    id: paramsId
+                }
+            })
     }
-    
+
 }
 
 module.exports = EmployerAccountService;
