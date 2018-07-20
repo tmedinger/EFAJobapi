@@ -1,11 +1,11 @@
 require('dotenv').config();
 const express = require('express'); 
+const app = express(); 
+require('./routes');
 const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
-const rfs = require('rotating-file-stream')
-
-const app = express();
+const rfs = require('rotating-file-stream');
 
 var logDirectory = path.join(__dirname, 'logs')
 
