@@ -2,39 +2,36 @@
 
 // This should have an initial get function that retrieves all of the items from that db table
 
-var db = require("../models/index").sequelize;
-var employerModel = db.model("../models/Employer_account"); // - 7/19/2018 does not exist yet 
-var modelOne = db.model("model_one");
-var modelTwo = db.model("model_two");
+var db = require("../db");
+var employerModel = db.import("../models/Employer_account"); // - 7/19/2018 does not exist yet 
+var modelOne = db.import("model_one");
+var modelTwo = db.import("model_two");
 
 class EmployerAccountService {
-    constructor(userId, paramsId){
+    constructor() {
+    }
 
-     }
-
-    getAllEmployers(){
-    // MODELNAME
-    //     .findAll({
-    //         where: {
-    //             owner: userId
-    //         }
-    //     })
-        return employerModel.findAll({ 
-            include: [modelOne, modelTwo] 
+    getAllEmployers() {
+        // MODELNAME
+        //     .findAll({
+        //         where: {
+        //             owner: userId
+        //         }
+        //     })
+        return employerModel.findAll({
+            include: [modelOne, modelTwo]
         })
     }
-    
-    getOneEmployer(){
-    // MODELNAME
-    //     .findOne({
-    //         where: {
-    //             id: paramsId,
-    //             owner: userid
-    //         }
-    //     })
+
+    getOneEmployer(paramsId) {
+        return employerModel.findOne({
+            where: {
+                id: paramsId
+            }
+        })
 
     }
-    
+
 }
 
 module.exports = EmployerAccountService;

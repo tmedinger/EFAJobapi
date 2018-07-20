@@ -1,11 +1,8 @@
 var express = require('express')
 var router = express.Router()
-var sequelize = require('../db');
-var Job = sequelize.import('../models/jobsmodel');
+// var Job = sequelize.import('../models/jobsmodel');
 
 var EmployerAccountService = require("../services/employerAccountServices");
-
-const employerAccountService = () => new EmployerAccountService()
 
 router.get("/jobs", function (req, res) {
 
@@ -28,7 +25,7 @@ router.get("/jobs/:employerid", function (req, res) {
     var userId = req.user.id // req.user.id comes from validate-sessions middleware
     var paramsId = req.params.id // id parameter from endpoint
 
-    employerAccountService(userId, paramsId).getOneEmployer()
+    EmployerAccountService.getOneEmployer(paramsId)
     .then(data => res.json(data))
     .catch(err => err.status(500).send(err.message));
 })
@@ -39,7 +36,7 @@ router.get("/jobs/:employerid/:jobid", function (req, res) {
     var userId = req.user.id // req.user.id comes from validate-sessions middleware
     var paramsId = req.params.id // id parameter from endpoint
 
-    employerAccountService(userId, paramsId).getOneEmployer()
+    employerAccountService.getOneEmployer()
     .then(data => res.json(data))
     .catch(err => err.status(500).send(err.message));
 })
