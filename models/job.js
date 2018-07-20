@@ -1,4 +1,4 @@
-const Job = (sequelize, Datatypes) => {
+module.exports = (sequelize, DataTypes) => {
     return sequelize.define ("job", {
         job_role: {
             type: DataTypes.STRING,
@@ -35,5 +35,4 @@ const Job = (sequelize, Datatypes) => {
         }
     })
 }
-    
-export default Job;
+
