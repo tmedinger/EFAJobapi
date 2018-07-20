@@ -23,6 +23,30 @@ router.get("/jobs", function (req, res) {
         );
 })
 
+// /api/jobs/:jobid - GET (Authorize: Admin, Student, Employers) 
+
+router.get('/job/:jobid', function (req,res) {
+
+    
+    Job
+        .findOne({
+            where: {
+                id:req.params.id
+            }
+        })
+        .then(
+            function findAllSuccess(data) {
+                res.json(data);
+            },
+            function findAllError(err) {
+                res.send(500, err.message);
+            }
+        );
+})
+
+
+
+
 // /api/jobs/:employerid - GET (Authorize: Admin, Employers)
 router.get("/jobs/:employerid", function (req, res) {
     var userId = req.user.id // req.user.id comes from validate-sessions middleware
