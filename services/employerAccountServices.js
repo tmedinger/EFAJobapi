@@ -20,7 +20,7 @@ var modelTwo = db.import("model_two");
     //     })
     // }
 
-    exports.getOneEmployer(paramsId) {
+    exports.getOneEmployer = function(paramsId) {
         return employerModel.findOne({
             where: {
                 id: paramsId
