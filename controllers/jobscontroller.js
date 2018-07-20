@@ -1,85 +1,78 @@
 var express = require('express')
 var router = express.Router()
-var sequelize = require('../db');
-var Job = sequelize.import('../models/jobsmodel');
-
-var EmployerAccountService = require("../services/employerAccountServices");
-
-const employerAccountService = () => new EmployerAccountService()
+var Job = require('../services/jobServices');
 
 router.get("/jobs", function (req, res) {
 
     Job
-        .findAll({
-            attributes: ['job_title']
-        })
+    .getAll()
+    .then(
+      function findAllSuccess(data) {
+          res.json(data);
+      },
+      function findAllError(err) {
+          res.send(500, err.message);
+      }
+  );
+  })
+router.post('/api/createjob', function (req, res) {
+
+    Job.createJob(req)
+    .then(
+        function createSuccess(job) {
+            res.json({
+                job: job
+            });            
+        },
+        function createError(err){
+            res.send(500, err.message);
+        }
+    )
+})
+
+router.put(`/api/jobEdit/:id`, function(req, res) {
+        var data = req.params.id;
+        
+        Job.editJob(req, data)
+
+            .then(
+                function updateSuccess(job) {
+                    res.json({
+                        job: job
+                    });            
+                },
+                function updateError(err){
+                    res.send(500, err.message);
+                }
+            )
+    });
+
+router.get(`/api/getJob/:id`, function(req, res) {
+        var id = req.params.id;
+
+        Job.getOneJob(req, id)
+            .then(
+                function findOneSuccess(data) {
+                    res.json(data);
+                },
+                function findOneError(err) {
+                    res.send(500, err.message);
+                }
+            );
+    });
+
+router.delete(`/api/deleteJob/:id`, function(req, res) {
+    var id = req.params.id;
+
+    Job.deleteJob(req, id)
         .then(
-            function findAllSuccess(data) {
-                res.json(data);
+            function deleteSuccess(data) {
+                res.send("Student successfully deleted");
             },
-            function findAllError(err) {
+            function deleteError(err){
                 res.send(500, err.message);
             }
-        );
+        )
 })
-
-// /api/jobs/:jobid - GET (Authorize: Admin, Student, Employers) 
-
-router.get('/job/:jobid', function (req,res) {
-
-    
-    Job
-        .findOne({
-            where: {
-                id:req.params.id
-            }
-        })
-        .then(
-            function findAllSuccess(data) {
-                res.json(data);
-            },
-            function findAllError(err) {
-                res.send(500, err.message);
-            }
-        );
-})
-
-
-
-
-// /api/jobs/:employerid - GET (Authorize: Admin, Employers)
-router.get("/jobs/:employerid", function (req, res) {
-    var userId = req.user.id // req.user.id comes from validate-sessions middleware
-    var paramsId = req.params.id // id parameter from endpoint
-
-    employerAccountService(userId, paramsId).getOneEmployer()
-    .then(data => res.json(data))
-    .catch(err => err.status(500).send(err.message));
-})
-
-
-// /api/jobs/:employerid/:jobid - GET (Authorize: Admin, Employers)
-router.get("/jobs/:employerid/:jobid", function (req, res) {
-    var userId = req.user.id // req.user.id comes from validate-sessions middleware
-    var paramsId = req.params.id // id parameter from endpoint
-
-    employerAccountService(userId, paramsId).getOneEmployer()
-    .then(data => res.json(data))
-    .catch(err => err.status(500).send(err.message));
-})
-
-// /api/jobs/:employerid? - GET (Authorize: Admin, Employers)
-// q = query
-// jt = jobtype
-// ca = createdAt
-router.get("/jobs/:employerid?", function (req, res) {
-    var userId = req.user.id // req.user.id comes from validate-sessions middleware
-    var paramsId = req.params.id // id parameter from endpoint
-
-    employerAccountService(userId, paramsId).getOneEmployer()
-    .then(data => res.json(data))
-    .catch(err => err.status(500).send(err.message));
-})
-
 
 module.exports = router;
