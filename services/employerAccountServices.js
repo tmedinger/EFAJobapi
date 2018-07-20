@@ -7,31 +7,25 @@ var employerModel = db.import("../models/Employer_account"); // - 7/19/2018 does
 var modelOne = db.import("model_one");
 var modelTwo = db.import("model_two");
 
-class EmployerAccountService {
-    constructor() {
-    }
 
-    getAllEmployers() {
-        // MODELNAME
-        //     .findAll({
-        //         where: {
-        //             owner: userId
-        //         }
-        //     })
-        return employerModel.findAll({
-            include: [modelOne, modelTwo]
-        })
-    }
+    // getAllEmployers() {
+    //     // MODELNAME
+    //     //     .findAll({
+    //     //         where: {
+    //     //             owner: userId
+    //     //         }
+    //     //     })
+    //     return employerModel.findAll({
+    //         include: [modelOne, modelTwo]
+    //     })
+    // }
 
-    getOneEmployer(paramsId) {
+    exports.getOneEmployer(paramsId) {
         return employerModel.findOne({
             where: {
                 id: paramsId
             }
         })
 
-    }
-
 }
 
-module.exports = EmployerAccountService;
